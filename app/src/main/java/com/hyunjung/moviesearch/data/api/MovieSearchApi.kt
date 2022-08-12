@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface MovieSearchApi {
 
-    @Headers("X-Naver-Client-Id: {$CLIENT_ID}", "X-Naver-Client-Secret: {$CLIENT_SECRET}")
+    @Headers("X-Naver-Client-Id: $CLIENT_ID", "X-Naver-Client-Secret: $CLIENT_SECRET")
     @GET("v1/search/movie.json")
     suspend fun searchMovies(
         @Query("query") query: String
