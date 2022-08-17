@@ -16,9 +16,19 @@ class MovieSearchViewHolder(
 
         itemView.apply {
             binding.ivItem.load(movie.image)
-            binding.tvItemTitle.text = "제목: $title"
+            binding.tvItemTitle.text = "제목: ${removeTag(title)}"
             binding.tvItemDate.text = "출시일: $date"
             binding.tvItemRate.text = "평점: $rate"
         }
     }
+
+    private fun removeTag(title: String) =
+        title.replace(Regex("[<b></b>]")) {
+            when (it.value) {
+                "<b>" -> ""
+                "</b>" -> ""
+                else -> ""
+            }
+        }
+
 }
